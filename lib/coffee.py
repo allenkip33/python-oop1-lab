@@ -1,19 +1,14 @@
 #!/usr/bin/env python3
 
 class Coffee:
-    def __init__(self):
-        self.price =  float(input("Enter the price"))
-
-        while True:
-            size_input = input("Enter the size :").capitalize()
-            if size_input not in ("Small", "Medium", "Large"):
-                print("size must be Small, Medium, or Large")
-            else:
-                self.input = size_input
-                break
+    def __init__(self, size: str, price: float):
+        formatted_size = size.capitalize()
+        if formatted_size not in ("Small", "Medium", "Large"):
+            raise ValueError("size must be Small, Medium, or Large")
+            
+        self.size = formatted_size
+        self.price = float(price)
 
     def tip(self):
-            print("This coffee is great, here’s a tip!")
-            self.price += 1
-
-
+        print("This coffee is great, here’s a tip!")
+        self.price += 1.0
